@@ -2,7 +2,6 @@ package com.springai.controller;
 
 import com.springai.entity.Tutorial;
 import com.springai.service.ChatService;
-import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class ChatController {
     }
 
     @GetMapping("/openai")
-    public ResponseEntity<List<Tutorial>> chatWithOpenAi(@RequestParam(value = "q", required = true) String prompt) {
+    public ResponseEntity<String> chatWithOpenAi(@RequestParam(value = "q", required = true) String prompt) {
         var response = chatService.chat(prompt);
         return ResponseEntity.ok(response);
     }

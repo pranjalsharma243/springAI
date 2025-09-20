@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ChatService {
 
-    List<Tutorial> chat(String query);
+    String chat(String query);
 }
