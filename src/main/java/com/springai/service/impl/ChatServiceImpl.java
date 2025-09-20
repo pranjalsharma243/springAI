@@ -31,6 +31,9 @@ public class ChatServiceImpl implements ChatService {
                 .maxTokens(100)
                 .build());*/
         Prompt prompt1 = new Prompt(query);
+        // modify this prompt and extra things to prompt make it more attractive
+        String querystr = "As a expert in coding and programming. always write program in java. " +
+                "Now reply to this question :{query}";
         /*var response = chatClient
                 .prompt(prompt1)
                 .call()
@@ -39,13 +42,12 @@ public class ChatServiceImpl implements ChatService {
                 .getResult()
                 .getOutput()
                 .getText();
-
          */
-        var response = chatClient.prompt(prompt1)
+        var response = chatClient
+                .prompt()
+                .user(u -> u.text(querystr).param("query",query))
                 .call()
                 .content();
-
         return response;
-
     }
 }
